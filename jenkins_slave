@@ -15,7 +15,7 @@ pipeline {
                 script {
                     sh "echo 'Building command...'"
 
-                    if (env.params.AGE != "") {
+                    if (params.AGE != "") {
                         sh "python myscript.py ${params.NAME} --age ${params.AGE}"
                     } else {
                         sh "python myscript.py ${params.NAME}"
