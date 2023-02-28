@@ -1,1 +1,31 @@
-# your Home work
+pipeline {
+    agent any
+    parameters {
+        string(name: 'NAME', defaultValue: 'Tuchsanai', description: 'Enter your name')
+        string(name: 'AGE', defaultValue: '', description: 'Enter your age (optional)')
+    }
+    stages {
+        stage('Tigged from master'){
+            steps{
+                echo 'Tigged from master'
+            }
+        }
+        stage('Build command') {
+            steps {
+                echo 'Building command...'
+                scrpit {
+                    if (env.params.AGE != "") {
+                        sh "python myscript.py ${params.NAME} --age ${params.AGE}"
+                    } else {
+                        sh "python myscript.py ${params.NAME}"
+                    }
+                }
+            }
+        }
+        stage('Command built') {
+            steps {
+                echo 'command built'
+            }
+        }
+    }
+}
