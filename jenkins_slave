@@ -12,9 +12,9 @@ pipeline {
         }
         stage('Build command') {
             steps {
-                scrpit {
+                script {
                     sh "echo 'Building command...'"
-                    
+
                     if (env.params.AGE != "") {
                         sh "python myscript.py ${params.NAME} --age ${params.AGE}"
                     } else {
