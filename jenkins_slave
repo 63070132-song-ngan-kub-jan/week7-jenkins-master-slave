@@ -13,7 +13,7 @@ pipeline {
         stage('Build command') {
             steps {
                 sh "echo 'Building command...'"
-                sh "python myscript.py"
+                sh "python3 myscript.py"
             }
         }
         stage('Command built') {
