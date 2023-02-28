@@ -12,15 +12,8 @@ pipeline {
         }
         stage('Build command') {
             steps {
-                script {
-                    sh "echo 'Building command...'"
-
-                    if (params.AGE != "") {
-                        sh "python myscript.py ${params.NAME} --age ${params.AGE}"
-                    } else {
-                        sh "python myscript.py ${params.NAME}"
-                    }
-                }
+                sh "echo 'Building command...'"
+                sh "python myscript.py"
             }
         }
         stage('Command built') {
